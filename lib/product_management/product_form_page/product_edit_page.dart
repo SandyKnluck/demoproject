@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class ProductEditPage extends StatefulWidget {
-  final String productId; // รับ id สินค้า
+  final String productId;
 
   const ProductEditPage({super.key, required this.productId});
 

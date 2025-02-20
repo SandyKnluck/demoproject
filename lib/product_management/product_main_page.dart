@@ -125,10 +125,10 @@ class _ProductMainPageState extends State<ProductMainPage> {
                             fontSize: 16,
                             fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 20,
                       ),
-                      Icon(
+                      const Icon(
                         Icons.edit,
                         color: Colors.grey,
                         size: 20,

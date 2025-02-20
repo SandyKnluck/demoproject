@@ -101,7 +101,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
                 floatingLabelBehavior: FloatingLabelBehavior.never,
               ),
             ),
-            const SizedBox(
+             const SizedBox(
               height: 20,
             ),
             Container(
