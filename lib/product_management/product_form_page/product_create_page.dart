@@ -16,16 +16,18 @@ class _ProductFormPageState extends State<ProductFormPage> {
 
   Future<void> createProduct() async {
     try {
-      var response = await http.post(Uri.parse("http://10.0.2.2:8001/products"),
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: jsonEncode({
-            "name": nameController.text,
-            "description": descriptionController.text,
-            "price": priceController.text
-          }));
+      var response =
+          await http.post(Uri.parse("http://localhost:8001/products"),
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: jsonEncode({
+                "name": nameController.text,
+                "description": descriptionController.text,
+                "price": priceController.text
+              }));
       if (response.statusCode == 201) {
+        // Handle success if needed
       } else {
         throw Exception("Failed to load products");
       }
@@ -34,19 +36,15 @@ class _ProductFormPageState extends State<ProductFormPage> {
     }
   }
 
-/*
-  @override
-  void initState() {
-    super.initState();
-    createProduct();
-  }
-*/
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Create Product'),
-        backgroundColor: const Color.fromARGB(255, 193, 211, 225),
+        title: const Text(
+          'Create Product',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.blueGrey[900],
       ),
       body: Padding(
         padding: const EdgeInsets.all(30),
@@ -59,9 +57,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
-            const SizedBox(
-              height: 3,
-            ),
+            const SizedBox(height: 3),
             TextField(
               controller: nameController,
               decoration: const InputDecoration(
@@ -72,12 +68,10 @@ class _ProductFormPageState extends State<ProductFormPage> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                 ),
-                floatingLabelBehavior: FloatingLabelBehavior.never,
+                // floatingLabelBehavior: FloatingLabelBehavior.never,
               ),
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 20),
             Container(
               alignment: Alignment.topLeft,
               child: const Text(
@@ -85,9 +79,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
-            const SizedBox(
-              height: 3,
-            ),
+            const SizedBox(height: 3),
             TextField(
               controller: descriptionController,
               decoration: const InputDecoration(
@@ -98,12 +90,10 @@ class _ProductFormPageState extends State<ProductFormPage> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                 ),
-                floatingLabelBehavior: FloatingLabelBehavior.never,
+                //floatingLabelBehavior: FloatingLabelBehavior.never,
               ),
             ),
-             const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 20),
             Container(
               alignment: Alignment.topLeft,
               child: const Text(
@@ -111,9 +101,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
-            const SizedBox(
-              height: 3,
-            ),
+            const SizedBox(height: 3),
             TextField(
               controller: priceController,
               decoration: const InputDecoration(
@@ -124,7 +112,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                 ),
-                floatingLabelBehavior: FloatingLabelBehavior.never,
+                //floatingLabelBehavior: FloatingLabelBehavior.never,
               ),
               keyboardType: TextInputType.number,
             ),
@@ -133,35 +121,34 @@ class _ProductFormPageState extends State<ProductFormPage> {
               width: 200,
               height: 40,
               child: ElevatedButton(
-                  onPressed: () async {
-                    await createProduct();
-                    Navigator.pop(context, true);
+                onPressed: () async {
+                  await createProduct();
+                  Navigator.pop(context, true);
 
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Create Success!'),
-                        backgroundColor: Colors.green,
-                      ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 183, 230, 189),
-                  ),
-                  child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.add, color: Colors.black),
-                        SizedBox(
-                          width: 3,
-                        ),
-                        Text(
-                          'create',
-                          style: TextStyle(
-                              fontSize: 18,
-                              color: Color.fromARGB(255, 0, 0, 0)),
-                        ),
-                      ])),
-            )
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Create Success!'),
+                      backgroundColor: Colors.green,
+                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor:
+                      const Color.fromARGB(255, 119, 170, 113), // Fresh Green
+                ),
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.check, color: Colors.white), // Checkmark Icon
+                    SizedBox(width: 3),
+                    Text(
+                      'Create',
+                      style: TextStyle(fontSize: 18, color: Colors.white),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
