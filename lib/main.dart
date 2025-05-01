@@ -1,7 +1,13 @@
+import 'package:demoproject/animation/animated_container_test.dart';
 import 'package:demoproject/animation/traffic_light.dart';
 import 'package:demoproject/custom_card/profile_page.dart';
+import 'package:demoproject/custom_stf/team_count_score.dart';
+import 'package:demoproject/form_basic/registration_form.dart';
+import 'package:demoproject/form_exam.dart';
 //import 'package:demoproject/product_management/product_main_page.dart';
 import 'package:flutter/material.dart';
+
+import 'form_exam2.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,7 +34,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'ThemeMode Demo',
       debugShowCheckedModeBanner: false,
       /*
@@ -48,7 +54,7 @@ class _MyAppState extends State<MyApp> {
       // Set the theme mode (light or dark)
       //home: ProfilePage(toggleTheme: _toggleTheme),
       */
-      home: const TrafficLight(),
+      home: FormExam2(),
     );
   }
 }
